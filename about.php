@@ -10,7 +10,7 @@ include_once __DIR__ . '/includes/header.php';
     <div class="py-5 bg-black text-center animate-on-scroll" style="padding-top: 5rem !important; padding-bottom: 5rem !important;">
         <div class="container">
             <span class="section-label">Heritage &amp; Craft</span>
-            <h1 class="font-display text-white display-4 mt-3 text-luxury-glow" style="white-space: nowrap;">About AromaLuxe</h1>
+            <h1 class="font-display text-white mt-3 text-luxury-glow" style="white-space: nowrap; font-size: clamp(1.8rem, 5vw, 3.5rem);">About AromaLuxe</h1>
             <div class="section-heading-line mx-auto mt-3"></div>
             <p class="text-secondary fs-5 mt-4 mx-auto" style="max-width: 680px; font-family: var(--font-body);">
                 Where ancient botanical alchemy meets modern luxury — crafting fragrances that become part of your identity.

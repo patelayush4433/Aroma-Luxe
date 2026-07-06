@@ -1,0 +1,92 @@
+/* --- ADMIN STYLING SYSTEMS --- */
+body {
+    background-color: #0b0c10;
+    color: #c5c6c7;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.admin-sidebar {
+    background-color: #1f2833;
+    border-right: 1px solid rgba(212,175,55,0.15);
+    min-height: 100vh;
+}
+
+.admin-sidebar .nav-link {
+    color: #c5c6c7;
+    font-weight: 500;
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    transition: all 0.3s;
+}
+
+.admin-sidebar .nav-link:hover, .admin-sidebar .nav-link.active {
+    color: #d4af37;
+    background-color: rgba(212,175,55,0.08);
+}
+
+.admin-navbar {
+    background-color: #1f2833;
+    border-bottom: 1px solid rgba(212,175,55,0.15);
+}
+
+.admin-card {
+    background-color: #1f2833;
+    border: 1px solid rgba(212,175,55,0.15);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+    transition: transform 0.3s;
+}
+
+.admin-card:hover {
+    transform: translateY(-3px);
+    border-color: #d4af37;
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    color: #d4af37;
+    opacity: 0.8;
+}
+
+.table-luxury {
+    background-color: #1f2833 !important;
+    color: #c5c6c7 !important;
+    border: 1px solid rgba(212,175,55,0.15);
+}
+
+.table-luxury th {
+    background-color: #0f141d !important;
+    color: #d4af37 !important;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1px;
+}
+
+.table-luxury td {
+    background-color: #1f2833 !important;
+    border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+    vertical-align: middle;
+}
+
+.btn-admin-gold {
+    background-color: #d4af37;
+    color: #0b0c10;
+    font-weight: 600;
+    border: none;
+}
+.btn-admin-gold:hover {
+    background-color: #c5a028;
+    color: #0b0c10;
+}
+
+.badge-status-pending { background-color: #f39c12; color: #fff; }
+.badge-status-packed { background-color: #3498db; color: #fff; }
+.badge-status-shipped { background-color: #9b59b6; color: #fff; }
+.badge-status-delivered { background-color: #2ecc71; color: #fff; }
+.badge-status-cancelled { background-color: #e74c3c; color: #fff; }
+
+.analytics-chart-container {
+    background-color: #1f2833;
+    border: 1px solid rgba(212,175,55,0.15);
+    border-radius: 8px;
+    padding: 20px;
+}

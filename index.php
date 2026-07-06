@@ -74,15 +74,17 @@ include_once __DIR__ . '/includes/header.php';
     <!-- Premium Parallax Hero Section -->
     <header class="hero-section">
         <div class="hero-bg-accent"></div>
+        <div class="hero-particles"></div>
+        <div class="hero-particles-extra"></div>
         <div class="container h-100 d-flex align-items-center">
             <div class="row w-100 align-items-center">
                 <!-- Left Content -->
                 <div class="col-lg-6 hero-content text-lg-start text-center mb-5 mb-lg-0">
-                    <span class="text-warning text-uppercase small fw-bold tracking-wide" style="letter-spacing: 3px;">Artisanal Niche Perfumery</span>
-                    <h1 class="text-white display-3 fw-bold my-3 font-heading leading-tight text-luxury-glow">
+                    <span class="section-label" style="letter-spacing: 4px;">Artisanal Niche Perfumery</span>
+                    <h1 class="text-white display-3 fw-bold my-3 font-display leading-tight text-luxury-glow hero-title-animate" style="visibility: hidden;">
                         <?php echo __('hero_title'); ?>
                     </h1>
-                    <p class="text-secondary fs-5 mb-4 font-body fw-light">
+                    <p class="text-secondary fs-5 mb-4 fw-light" style="font-family: var(--font-body);">
                         <?php echo __('hero_subtitle'); ?>
                     </p>
                     <div class="d-flex flex-column flex-sm-row justify-content-center justify-content-lg-start gap-3">
@@ -99,13 +101,16 @@ include_once __DIR__ . '/includes/header.php';
         </div>
     </header>
 
+    <!-- Section Divider -->
+    <div class="section-divider"></div>
+
     <!-- Luxury Categories Spotlight Grid -->
     <section class="py-5 animate-on-scroll" style="background-color: var(--bg-secondary);">
         <div class="container py-4">
             <div class="text-center mb-5">
-                <span class="text-warning text-uppercase small tracking-widest" style="letter-spacing: 2px;">Curation</span>
-                <h2 class="text-white font-heading mt-2 text-luxury-glow">Shop by Category</h2>
-                <div class="mx-auto bg-warning mt-3" style="width: 50px; height: 1.5px;"></div>
+                <span class="section-label">Curation</span>
+                <h2 class="text-white font-display mt-2 text-luxury-glow">Shop by Category</h2>
+                <div class="section-heading-line mx-auto mt-3"></div>
             </div>
 
             <div class="row g-4 justify-content-center">
@@ -143,13 +148,16 @@ include_once __DIR__ . '/includes/header.php';
         </div>
     </section>
 
+    <!-- Section Divider -->
+    <div class="section-divider"></div>
+
     <!-- Featured Products Showcase -->
     <section class="py-5 bg-black animate-on-scroll">
         <div class="container py-4">
             <div class="text-center mb-5">
-                <span class="text-warning text-uppercase small tracking-widest" style="letter-spacing: 2px;">Exclusive Selection</span>
-                <h2 class="text-white font-heading mt-2 text-luxury-glow"><?php echo __('featured_products'); ?></h2>
-                <div class="mx-auto bg-warning mt-3" style="width: 50px; height: 1.5px;"></div>
+                <span class="section-label">Exclusive Selection</span>
+                <h2 class="text-white font-display mt-2 text-luxury-glow"><?php echo __('featured_products'); ?></h2>
+                <div class="section-heading-line mx-auto mt-3"></div>
             </div>
 
             <div class="row g-4">
@@ -202,13 +210,16 @@ include_once __DIR__ . '/includes/header.php';
         </div>
     </section>
 
+    <!-- Section Divider -->
+    <div class="section-divider"></div>
+
     <!-- Limited Offer Promo Spotlight (Discount Offers) -->
-    <section class="py-5 border-top border-bottom border-secondary text-white animate-on-scroll" style="background: linear-gradient(135deg, #111 0%, #222 100%);">
+    <section class="py-5 text-white animate-on-scroll" style="background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-tertiary) 50%, var(--bg-primary) 100%);">
         <div class="container py-5">
             <div class="row align-items-center">
                 <div class="col-md-6 mb-4 mb-md-0">
-                    <span class="text-warning font-heading small text-uppercase tracking-widest">Limited Edition Masterpiece</span>
-                    <h2 class="font-heading display-4 fw-bold mt-2" style="color: var(--gold); text-shadow: 0 0 20px rgba(229, 192, 96, 0.4), 0 0 60px rgba(229, 192, 96, 0.15);">Golden Elixir Set</h2>
+                    <span class="section-label">Limited Edition Masterpiece</span>
+                    <h2 class="font-display display-4 fw-bold mt-2" style="background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--rose-gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Golden Elixir Set</h2>
                     <p class="text-secondary mt-3 fs-5">Includes 100ml Parfum bottle, luxury traveler spray, and a velvet packaging sleeve. Infused with Cambodian Agarwood, Golden Honey, and Saffron.</p>
                     <div class="d-flex gap-3 mt-4 align-items-center">
                 
@@ -224,6 +235,9 @@ include_once __DIR__ . '/includes/header.php';
             </div>
         </div>
     </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider"></div>
 
     <!-- Best Selling and New Arrivals Tabs -->
     <section class="py-5 animate-on-scroll" style="background-color: var(--bg-secondary);">
@@ -325,13 +339,16 @@ include_once __DIR__ . '/includes/header.php';
         </div>
     </section>
 
+    <!-- Section Divider -->
+    <div class="section-divider"></div>
+
     <!-- Luxury Client Feedback Scrolling Reviews -->
-    <section class="py-5 bg-black border-top border-secondary animate-on-scroll">
+    <section class="py-5 bg-black animate-on-scroll">
         <div class="container py-4">
             <div class="text-center mb-5">
-                <span class="text-warning text-uppercase small tracking-widest" style="letter-spacing: 2px;">Testimonials</span>
-                <h2 class="text-white font-heading mt-2 text-luxury-glow">What Our Clients Say</h2>
-                <div class="mx-auto bg-warning mt-3" style="width: 50px; height: 1.5px;"></div>
+                <span class="section-label">Testimonials</span>
+                <h2 class="text-white font-display mt-2 text-luxury-glow">What Our Clients Say</h2>
+                <div class="section-heading-line mx-auto mt-3"></div>
             </div>
 
             <div class="row g-4">
@@ -366,13 +383,16 @@ include_once __DIR__ . '/includes/header.php';
         </div>
     </section>
 
+    <!-- Section Divider -->
+    <div class="section-divider"></div>
+
     <!-- Luxury Instagram Gallery -->
     <section class="py-5 animate-on-scroll" style="background-color: var(--bg-secondary);">
         <div class="container py-4">
             <div class="text-center mb-5">
-                <span class="text-warning text-uppercase small tracking-widest" style="letter-spacing: 2px;">Social Feed</span>
-                <h2 class="text-white font-heading mt-2 text-luxury-glow">#AromaLuxeMoments</h2>
-                <div class="mx-auto bg-warning mt-3" style="width: 50px; height: 1.5px;"></div>
+                <span class="section-label">Social Feed</span>
+                <h2 class="text-white font-display mt-2 text-luxury-glow">#AromaLuxeMoments</h2>
+                <div class="section-heading-line mx-auto mt-3"></div>
             </div>
 
             <div class="row g-3">

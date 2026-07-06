@@ -4,8 +4,11 @@
  */
 ?>
 <?php if (!isset($no_visible_footer) || !$no_visible_footer): ?>
+    <!-- Animated Gradient Divider -->
+    <div class="section-divider"></div>
+
     <!-- Brand Partners Showcase -->
-    <section class="py-5 border-top border-bottom border-secondary partners-section-luxury text-center">
+    <section class="py-5 partners-section-luxury text-center">
         <div class="container">
             <h6 class="text-uppercase font-heading small mb-4" style="letter-spacing: 3px;">Our Fragrance Partners</h6>
             <div class="row align-items-center justify-content-center g-4">
@@ -18,8 +21,11 @@
         </div>
     </section>
 
+    <!-- Animated Gradient Divider -->
+    <div class="section-divider"></div>
+
     <!-- Main Footer -->
-    <footer class="pt-5 pb-3 border-top border-secondary footer-luxury">
+    <footer class="pt-5 pb-3 footer-luxury">
         <div class="container">
             <div class="row g-4 mb-5">
                 <!-- Col 1: About -->
@@ -28,11 +34,11 @@
                     <p class="small text-muted mb-4">
                         AromaLuxe is a curated boutique for luxury, niche, and designer fragrances. We craft and select masterworks that define identity, emotion, and memory.
                     </p>
-                    <div class="d-flex gap-3 fs-5">
-                        <a href="#" class="text-secondary-hover text-white"><i class="bi bi-facebook"></i></a>
-                        <a href="https://instagram.com" target="_blank" class="text-secondary-hover text-white"><i class="bi bi-instagram"></i></a>
-                        <a href="#" class="text-secondary-hover text-white"><i class="bi bi-pinterest"></i></a>
-                        <a href="#" class="text-secondary-hover text-white"><i class="bi bi-twitter-x"></i></a>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="social-icon-animated"><i class="bi bi-facebook"></i></a>
+                        <a href="https://instagram.com" target="_blank" class="social-icon-animated"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-icon-animated"><i class="bi bi-pinterest"></i></a>
+                        <a href="#" class="social-icon-animated"><i class="bi bi-twitter-x"></i></a>
                     </div>
                 </div>
 
@@ -234,21 +240,23 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const cards = document.querySelectorAll('.product-card');
-            cards.forEach(card => {
-                card.addEventListener('mousemove', (e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    const rotateX = ((y - centerY) / centerY) * -6;
-                    const rotateY = ((x - centerX) / centerX) * 6;
-                    card.style.transform = `translateY(-8px) perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            if (window.matchMedia('(pointer: fine)').matches) {
+                cards.forEach(card => {
+                    card.addEventListener('mousemove', (e) => {
+                        const rect = card.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        const centerX = rect.width / 2;
+                        const centerY = rect.height / 2;
+                        const rotateX = ((y - centerY) / centerY) * -5;
+                        const rotateY = ((x - centerX) / centerX) * 5;
+                        card.style.transform = `translateY(-10px) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                    });
+                    card.addEventListener('mouseleave', () => {
+                        card.style.transform = '';
+                    });
                 });
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = '';
-                });
-            });
+            }
         });
     </script>
 </body>

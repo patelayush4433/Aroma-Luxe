@@ -49,17 +49,23 @@ if (isset($_SESSION['customer_id'])) {
 </head>
 <body class="body-fade">
 
+    <!-- Cursor Follower -->
+    <div class="cursor-follower"></div>
+
+    <!-- Animated Gradient Mesh Background -->
+    <div class="gradient-mesh"></div>
+
     <!-- Special Offer Banner -->
-    <div class="bg-black text-center py-2 text-white border-bottom border-secondary small text-uppercase" style="letter-spacing: 2px; font-size: 0.75rem;">
-        ✦ Grand Launch Offer: Use Code <strong class="text-warning">LUXURY10</strong> for 10% Off ✦
+    <div class="offer-banner text-center py-2 text-white small text-uppercase" style="letter-spacing: 3px; font-size: 0.72rem;">
+        <span style="background: linear-gradient(90deg, var(--gold-light), var(--gold), var(--rose-gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">✦ Grand Launch Offer: Use Code <strong>LUXURY10</strong> for 10% Off ✦</span>
     </div>
 
     <!-- Main Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-luxury sticky-top">
         <div class="container">
             <!-- Brand Logo -->
-            <a class="navbar-brand luxury-font fw-bold" href="index.php" style="color: var(--gold); font-size: 1.6rem; letter-spacing: 3px;">
-                AROMALUXE
+            <a class="navbar-brand luxury-font fw-bold" href="index.php" style="font-size: 1.6rem; letter-spacing: 4px;">
+                <i class="bi bi-gem me-2" style="font-size: 1.1rem;"></i>AROMALUXE
             </a>
 
             <button class="navbar-toggler border-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">

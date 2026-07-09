@@ -120,6 +120,9 @@ if (isset($_SESSION['customer_id'])) {
                         <a class="nav-link nav-link-luxury" href="blog.php"><?php echo __('blog'); ?></a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link nav-link-luxury" href="about.php"><?php echo __('about'); ?></a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link nav-link-luxury" href="contact.php"><?php echo __('contact'); ?></a>
                     </li>
                 </ul>

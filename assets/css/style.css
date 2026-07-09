@@ -614,6 +614,12 @@ p {
     75% { transform: translateY(-20px) rotate(-0.5deg); }
 }
 
+@keyframes scrollPulse {
+    0% { transform: translateY(0); opacity: 1; }
+    50% { transform: translateY(14px); opacity: 0.3; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
 .hero-img {
     max-height: 72vh;
     object-fit: contain;

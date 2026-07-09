@@ -74,20 +74,43 @@ include_once __DIR__ . '/includes/header.php';
     <!-- Full-Page Particle Canvas Background -->
     <canvas id="particleCanvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></canvas>
 
-    <!-- Premium Parallax Hero Section -->
-    <header class="hero-section">
+    <!-- Premium Video Hero Section -->
+    <header class="hero-section" style="position: relative; overflow: hidden;">
+        <!-- Video Background -->
+        <video autoplay muted loop playsinline id="heroVideo" style="
+            position: absolute;
+            top: 50%; left: 50%;
+            min-width: 100%; min-height: 100%;
+            width: auto; height: auto;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            object-fit: cover;
+        ">
+            <source src="assets/videos/hero-bg.mp4" type="video/mp4">
+        </video>
+
+        <!-- Dark Overlay for Readability -->
+        <div style="
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(180deg, rgba(6,7,14,0.75) 0%, rgba(6,7,14,0.55) 40%, rgba(6,7,14,0.80) 100%);
+            z-index: 1;
+        "></div>
+
         <div class="hero-bg-accent"></div>
         <div class="hero-particles"></div>
         <div class="hero-particles-extra"></div>
-        <div class="container h-100 d-flex align-items-center">
+
+        <div class="container h-100 d-flex align-items-center" style="position: relative; z-index: 3;">
             <div class="row w-100 align-items-center">
-                <!-- Left Content -->
-                <div class="col-lg-6 hero-content text-lg-start text-center mb-5 mb-lg-0">
+                <!-- Content -->
+                <div class="col-lg-8 col-xl-7 hero-content text-lg-start text-center mx-auto mx-lg-0">
                     <span class="section-label" style="letter-spacing: 4px;">Artisanal Niche Perfumery</span>
                     <h1 class="text-white display-3 fw-bold my-3 font-display leading-tight text-luxury-glow hero-title-animate" style="visibility: hidden;">
                         <?php echo __('hero_title'); ?>
                     </h1>
-                    <p class="text-secondary fs-5 mb-4 fw-light" style="font-family: var(--font-body);">
+                    <p class="text-secondary fs-5 mb-4 fw-light" style="font-family: var(--font-body); max-width: 560px;">
                         <?php echo __('hero_subtitle'); ?>
                     </p>
                     <div class="d-flex flex-column flex-sm-row justify-content-center justify-content-lg-start gap-3">
@@ -95,12 +118,15 @@ include_once __DIR__ . '/includes/header.php';
                         <a href="shop.php?category=luxury" class="btn btn-outline-gold"><?php echo __('explore'); ?></a>
                     </div>
                 </div>
-
-                <!-- Right Perfume Floating Render -->
-                <div class="col-lg-6 text-center hero-image-container">
-                    <img src="assets/images/oud_perfume.png" alt="Featured Perfume bottle" class="hero-img img-fluid">
-                </div>
             </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 3; text-align: center;">
+            <div style="width: 24px; height: 40px; border: 2px solid rgba(212,168,83,0.4); border-radius: 12px; margin: 0 auto;">
+                <div style="width: 4px; height: 8px; background: var(--gold); border-radius: 2px; margin: 6px auto 0; animation: scrollPulse 2s ease-in-out infinite;"></div>
+            </div>
+            <span class="d-block mt-2" style="font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(212,168,83,0.5);">Scroll</span>
         </div>
     </header>
 

@@ -71,6 +71,9 @@ try {
 include_once __DIR__ . '/includes/header.php';
 ?>
 
+    <!-- Full-Page Particle Canvas Background -->
+    <canvas id="particleCanvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></canvas>
+
     <!-- Premium Parallax Hero Section -->
     <header class="hero-section">
         <div class="hero-bg-accent"></div>
@@ -431,5 +434,166 @@ include_once __DIR__ . '/includes/header.php';
             </div>
         </div>
     </section>
+
+<!-- Premium Particle Animation Engine -->
+<script>
+(function() {
+    const canvas = document.getElementById('particleCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let mouseX = -1000, mouseY = -1000;
+    const MAX_PARTICLES = 80;
+    const CONNECT_DISTANCE = 120;
+
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    class Particle {
+        constructor() {
+            this.reset();
+        }
+        reset() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 2.2 + 0.5;
+            this.speedX = (Math.random() - 0.5) * 0.4;
+            this.speedY = (Math.random() - 0.5) * 0.3 - 0.15;
+            this.opacity = Math.random() * 0.5 + 0.1;
+            this.fadeDir = Math.random() > 0.5 ? 1 : -1;
+            this.fadeSpeed = Math.random() * 0.003 + 0.001;
+            // Color variety: gold, rose-gold, amethyst, champagne
+            const colors = [
+                [212, 168, 83],   // gold
+                [201, 139, 110],  // rose-gold
+                [139, 108, 193],  // amethyst
+                [245, 230, 196],  // champagne
+                [242, 219, 167],  // gold-light
+            ];
+            this.color = colors[Math.floor(Math.random() * colors.length)];
+            this.isStar = Math.random() > 0.85;
+            this.twinklePhase = Math.random() * Math.PI * 2;
+            this.twinkleSpeed = Math.random() * 0.02 + 0.01;
+        }
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+
+            // Fade in/out pulse
+            this.opacity += this.fadeDir * this.fadeSpeed;
+            if (this.opacity >= 0.6) this.fadeDir = -1;
+            if (this.opacity <= 0.05) this.fadeDir = 1;
+
+            // Twinkle for star particles
+            this.twinklePhase += this.twinkleSpeed;
+
+            // Mouse repulsion
+            const dx = this.x - mouseX;
+            const dy = this.y - mouseY;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 100) {
+                const force = (100 - dist) / 100;
+                this.x += (dx / dist) * force * 1.5;
+                this.y += (dy / dist) * force * 1.5;
+            }
+
+            // Wrap around
+            if (this.x < -10) this.x = canvas.width + 10;
+            if (this.x > canvas.width + 10) this.x = -10;
+            if (this.y < -10) this.y = canvas.height + 10;
+            if (this.y > canvas.height + 10) this.y = -10;
+        }
+        draw() {
+            const [r, g, b] = this.color;
+            const alpha = this.isStar
+                ? this.opacity * (0.5 + 0.5 * Math.sin(this.twinklePhase))
+                : this.opacity;
+
+            if (this.isStar) {
+                // Draw 4-point star
+                const s = this.size * 2;
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.twinklePhase * 0.5);
+                ctx.beginPath();
+                for (let i = 0; i < 4; i++) {
+                    const angle = (i * Math.PI) / 2;
+                    ctx.moveTo(0, 0);
+                    ctx.lineTo(Math.cos(angle) * s, Math.sin(angle) * s);
+                }
+                ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${alpha})`;
+                ctx.lineWidth = 0.5;
+                ctx.stroke();
+                ctx.restore();
+
+                // Glow center
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size * 0.6, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha})`;
+                ctx.fill();
+            } else {
+                // Regular dot with soft glow
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha})`;
+                ctx.fill();
+
+                // Glow halo
+                if (this.size > 1.2) {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size * 3, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha * 0.08})`;
+                    ctx.fill();
+                }
+            }
+        }
+    }
+
+    // Initialize particles
+    for (let i = 0; i < MAX_PARTICLES; i++) {
+        particles.push(new Particle());
+    }
+
+    function drawConnections() {
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < CONNECT_DISTANCE) {
+                    const alpha = (1 - dist / CONNECT_DISTANCE) * 0.06;
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.strokeStyle = `rgba(212, 168, 83, ${alpha})`;
+                    ctx.lineWidth = 0.4;
+                    ctx.stroke();
+                }
+            }
+        }
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+            p.update();
+            p.draw();
+        });
+        drawConnections();
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+})();
+</script>
 
 <?php include_once __DIR__ . '/includes/footer.php'; ?>

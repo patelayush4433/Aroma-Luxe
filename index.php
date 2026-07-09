@@ -98,28 +98,10 @@ include_once __DIR__ . '/includes/header.php';
             z-index: 1;
         "></div>
 
+
         <div class="hero-bg-accent"></div>
         <div class="hero-particles"></div>
         <div class="hero-particles-extra"></div>
-
-        <div class="container h-100 d-flex align-items-center" style="position: relative; z-index: 3;">
-            <div class="row w-100 align-items-center">
-                <!-- Content -->
-                <div class="col-lg-8 col-xl-7 hero-content text-lg-start text-center mx-auto mx-lg-0">
-                    <span class="section-label" style="letter-spacing: 4px;">Artisanal Niche Perfumery</span>
-                    <h1 class="text-white display-3 fw-bold my-3 font-display leading-tight text-luxury-glow hero-title-animate" style="visibility: hidden;">
-                        <?php echo __('hero_title'); ?>
-                    </h1>
-                    <p class="text-secondary fs-5 mb-4 fw-light" style="font-family: var(--font-body); max-width: 560px;">
-                        <?php echo __('hero_subtitle'); ?>
-                    </p>
-                    <div class="d-flex flex-column flex-sm-row justify-content-center justify-content-lg-start gap-3">
-                        <a href="shop.php" class="btn btn-gold"><?php echo __('shop_now'); ?></a>
-                        <a href="shop.php?category=luxury" class="btn btn-outline-gold"><?php echo __('explore'); ?></a>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!-- Scroll Indicator -->
         <div style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 3; text-align: center;">

@@ -255,7 +255,7 @@ include_once __DIR__ . '/includes/header.php';
                                         <?php endif; ?>
 
                                         <div class="product-image-wrap">
-                                            <img src="<?php echo $product['image_url']; ?>" alt="<?php echo $product['name']; ?>">
+                                            <img src="<?php echo $product['image_url']; ?>" alt="<?php echo $product['name']; ?>" onerror="this.onerror=null; this.src='assets/images/womens_perfume.png';">
                                             <div class="product-action-overlay">
                                                 <button class="action-btn" data-wishlist-id="<?php echo $product['id']; ?>" onclick="toggleWishlist(<?php echo $product['id']; ?>)">
                                                     <i class="bi <?php echo in_array($product['id'], $userWishlistIds) ? 'bi-heart-fill text-danger' : 'bi-heart'; ?>"></i>

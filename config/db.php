@@ -29,16 +29,17 @@ try {
     // Column already exists or error is safe to ignore
 }
 
-// Convert seeded external product images to local offline images
+// Convert empty or broken product images to local offline perfume images
 try {
-    $pdo->exec("UPDATE `products` SET `image_url` = 'assets/images/oud_perfume.png' WHERE `id` = 1 AND `image_url` LIKE '%unsplash%'");
-    $pdo->exec("UPDATE `products` SET `image_url` = 'assets/images/womens_perfume.png' WHERE `id` = 2 AND `image_url` LIKE '%unsplash%'");
-    $pdo->exec("UPDATE `products` SET `image_url` = 'assets/images/mens_perfume.png' WHERE `id` = 3 AND `image_url` LIKE '%unsplash%'");
-    $pdo->exec("UPDATE `products` SET `image_url` = 'assets/images/mens_perfume.png' WHERE `id` = 4 AND `image_url` LIKE '%unsplash%'");
-    $pdo->exec("UPDATE `products` SET `image_url` = 'assets/images/womens_perfume.png' WHERE `id` = 5 AND `image_url` LIKE '%unsplash%'");
-    $pdo->exec("UPDATE `products` SET `image_url` = 'assets/images/unisex_perfume.png' WHERE `id` = 6 AND `image_url` LIKE '%unsplash%'");
-    $pdo->exec("UPDATE `products` SET `image_url` = 'assets/images/unisex_perfume.png' WHERE `id` = 7 AND `image_url` LIKE '%unsplash%'");
-    $pdo->exec("UPDATE `products` SET `image_url` = 'assets/images/oud_perfume.png' WHERE `id` = 8 AND `image_url` LIKE '%unsplash%'");
+    $pdo->exec("UPDATE `products` SET `image_url` = 'assets/images/womens_perfume.png' WHERE `image_url` IS NULL OR `image_url` = '' OR `image_url` LIKE '%unsplash%'");
+    $pdo->exec("UPDATE `products` SET `image_url` = 'assets/images/oud_perfume.png' WHERE `id` = 1 OR `name` LIKE '%Oud%'");
+    $pdo->exec("UPDATE `products` SET `image_url` = 'assets/images/womens_perfume.png' WHERE `id` = 2 OR `name` LIKE '%Rouge%' OR `name` LIKE '%Aqua%' OR `name` LIKE '%Allegoria%'");
+    $pdo->exec("UPDATE `products` SET `image_url` = 'assets/images/mens_perfume.png' WHERE `id` = 3 OR `name` LIKE '%Sauvage%' OR `name` LIKE '%Blue%'");
+    $pdo->exec("UPDATE `products` SET `image_url` = 'assets/images/mens_perfume.png' WHERE `id` = 4 OR `name` LIKE '%Noir%'");
+    $pdo->exec("UPDATE `products` SET `image_url` = 'assets/images/womens_perfume.png' WHERE `id` = 5 OR `name` LIKE '%Vanilla%'");
+    $pdo->exec("UPDATE `products` SET `image_url` = 'assets/images/unisex_perfume.png' WHERE `id` = 6 OR `name` LIKE '%Amber%'");
+    $pdo->exec("UPDATE `products` SET `image_url` = 'assets/images/unisex_perfume.png' WHERE `id` = 7 OR `name` LIKE '%Soleil%'");
+    $pdo->exec("UPDATE `products` SET `image_url` = 'assets/images/oud_perfume.png' WHERE `id` = 8 OR `name` LIKE '%Royal%'");
 } catch (PDOException $e) {
     // Ignore if table does not exist or matches are clean
 }

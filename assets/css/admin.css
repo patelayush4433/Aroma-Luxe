@@ -90,3 +90,25 @@ body {
     border-radius: 8px;
     padding: 20px;
 }
+
+/* High Contrast White/Silver Text Fix for Dark Tables */
+.table,
+.table-luxury,
+.table > :not(caption) > * > * {
+    --bs-table-color: #f8fafc !important;
+    color: #f8fafc !important;
+}
+
+.table td,
+.table th,
+.table-luxury td,
+.table-luxury th {
+    color: #f8fafc !important;
+}
+
+.table td span,
+.table td div,
+.table td small,
+.text-muted {
+    color: #e2e8f0 !important;
+}

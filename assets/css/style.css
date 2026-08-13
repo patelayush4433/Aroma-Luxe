@@ -1729,3 +1729,25 @@ input::placeholder, textarea::placeholder {
 [data-theme="light"] .hero-bottle-aura {
     background: radial-gradient(circle, rgba(212, 168, 83, 0.45) 0%, rgba(201, 139, 110, 0.25) 50%, transparent 70%) !important;
 }
+
+/* Global Table High Contrast Text Override */
+.table,
+.table-luxury,
+.table > :not(caption) > * > * {
+    --bs-table-color: #f8fafc !important;
+    color: #f8fafc !important;
+}
+
+.table td,
+.table th,
+.table-luxury td,
+.table-luxury th {
+    color: #f8fafc !important;
+}
+
+.table td span,
+.table td div,
+.table td small,
+.text-muted {
+    color: #cbd5e1 !important;
+}

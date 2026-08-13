@@ -71,34 +71,49 @@ try {
 include_once __DIR__ . '/includes/header.php';
 ?>
 
-    <!-- Premium Image Hero Section -->
-    <header class="hero-section" style="position: relative; min-height: 85vh; width: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; background-color: #06070e;">
-        <!-- Hero Background Image -->
-        <img src="assets/images/hero_luxury_banner.png" alt="AromaLuxe Luxury Perfume" style="
-            position: absolute;
-            top: 50%; left: 50%;
-            min-width: 100%; min-height: 100%;
-            width: 100%; height: 100%;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-            z-index: 0;
-        ">
+    <!-- Premium Image Hero Section with Levitating 3D Bottle Showcase -->
+    <header class="hero-section py-5" style="position: relative; min-height: 88vh; width: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; background: radial-gradient(circle at center, rgba(212, 168, 83, 0.12) 0%, rgba(11, 13, 26, 0.98) 70%);">
+        
+        <!-- Glowing Backdrop Aura -->
+        <div class="hero-bottle-aura"></div>
 
-        <!-- Dark Gradient Overlay for High Contrast -->
-        <div style="
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: linear-gradient(180deg, rgba(6,7,14,0.35) 0%, rgba(6,7,14,0.15) 50%, rgba(6,7,14,0.85) 100%);
-            z-index: 1;
-        "></div>
+        <div class="container text-center position-relative" style="z-index: 3;">
+            <div class="row align-items-center justify-content-center g-4">
+                
+                <!-- Hero Content Left / Top -->
+                <div class="col-lg-6 col-md-10 text-center text-lg-start pe-lg-4">
+                    <span class="badge bg-outline-gold text-warning border border-warning px-3 py-2 text-uppercase mb-3" style="letter-spacing: 3px; font-size: 0.7rem; backdrop-filter: blur(4px);">✦ Haute Parfumerie Collection ✦</span>
+                    
+                    <h1 class="display-4 text-white font-display fw-bold mb-3 hero-shimmer-title" style="letter-spacing: 2px;">
+                        The Essence of Artisanal Opulence
+                    </h1>
+                    
+                    <p class="lead text-secondary mb-4" style="max-width: 540px; font-size: 1.05rem; line-height: 1.8;">
+                        Handcrafted private fragrance blends infused with rare amber, royal oud, and French floral notes. Designed to define your unique signature presence.
+                    </p>
+
+                    <div class="d-flex gap-3 justify-content-center justify-content-lg-start flex-wrap">
+                        <a href="shop.php" class="btn btn-gold btn-lg px-4 py-3 shadow-gold"><i class="bi bi-bag-fill me-2"></i>Explore Collection</a>
+                        <a href="customize.php" class="btn btn-outline-gold btn-lg px-4 py-3"><i class="bi bi-magic me-2"></i>Bespoke Scent</a>
+                    </div>
+                </div>
+
+                <!-- Levitating Bottle Image Showcase (Small Photo) -->
+                <div class="col-lg-5 col-md-8 text-center mt-4 mt-lg-0">
+                    <div class="hero-bottle-container">
+                        <img src="assets/images/hero_luxury_banner.png" alt="AromaLuxe Private Collection" class="hero-bottle-img img-fluid">
+                    </div>
+                </div>
+
+            </div>
+        </div>
 
         <!-- Scroll Indicator -->
-        <div style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 3; text-align: center;">
-            <div style="width: 24px; height: 40px; border: 2px solid rgba(212,168,83,0.5); border-radius: 12px; margin: 0 auto; backdrop-filter: blur(4px);">
-                <div style="width: 4px; height: 8px; background: var(--gold); border-radius: 2px; margin: 6px auto 0; animation: scrollPulse 2s ease-in-out infinite;"></div>
+        <div style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 3; text-align: center;">
+            <div style="width: 22px; height: 38px; border: 2px solid rgba(212,168,83,0.5); border-radius: 12px; margin: 0 auto; backdrop-filter: blur(4px);">
+                <div style="width: 4px; height: 8px; background: var(--gold); border-radius: 2px; margin: 5px auto 0; animation: scrollPulse 2s ease-in-out infinite;"></div>
             </div>
-            <span class="d-block mt-2" style="font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(212,168,83,0.7); text-shadow: 0 1px 4px rgba(0,0,0,0.8);">Scroll</span>
+            <span class="d-block mt-1" style="font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(212,168,83,0.7);">Scroll</span>
         </div>
     </header>
 

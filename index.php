@@ -71,15 +71,25 @@ try {
 include_once __DIR__ . '/includes/header.php';
 ?>
 
-    <!-- Premium Video Hero Section -->
     <!-- Premium Image Hero Section -->
-    <header class="hero-section" style="position: relative; min-height: 85vh; display: flex; align-items: center; justify-content: center; overflow: hidden; background: url('assets/images/hero_luxury_banner.png') center center / cover no-repeat;">
+    <header class="hero-section" style="position: relative; min-height: 85vh; width: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; background-color: #06070e;">
+        <!-- Hero Background Image -->
+        <img src="assets/images/hero_luxury_banner.png" alt="AromaLuxe Luxury Perfume" style="
+            position: absolute;
+            top: 50%; left: 50%;
+            min-width: 100%; min-height: 100%;
+            width: 100%; height: 100%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: 0;
+        ">
+
         <!-- Dark Gradient Overlay for High Contrast -->
         <div style="
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: linear-gradient(180deg, rgba(6,7,14,0.45) 0%, rgba(6,7,14,0.30) 50%, rgba(6,7,14,0.85) 100%);
+            background: linear-gradient(180deg, rgba(6,7,14,0.35) 0%, rgba(6,7,14,0.15) 50%, rgba(6,7,14,0.85) 100%);
             z-index: 1;
         "></div>
 

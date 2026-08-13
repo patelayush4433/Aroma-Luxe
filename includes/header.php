@@ -49,9 +49,6 @@ if (isset($_SESSION['customer_id'])) {
 </head>
 <body class="body-fade">
 
-    <!-- Cursor Follower -->
-    <div class="cursor-follower"></div>
-
     <!-- Animated Gradient Mesh Background -->
     <div class="gradient-mesh"></div>
 

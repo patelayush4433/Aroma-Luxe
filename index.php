@@ -71,9 +71,6 @@ try {
 include_once __DIR__ . '/includes/header.php';
 ?>
 
-    <!-- Full-Page Particle Canvas Background -->
-    <canvas id="particleCanvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></canvas>
-
     <!-- Premium Video Hero Section -->
     <header class="hero-section" style="position: relative; overflow: hidden;">
         <!-- Video Background -->
@@ -97,11 +94,6 @@ include_once __DIR__ . '/includes/header.php';
             background: linear-gradient(180deg, rgba(6,7,14,0.75) 0%, rgba(6,7,14,0.55) 40%, rgba(6,7,14,0.80) 100%);
             z-index: 1;
         "></div>
-
-
-        <div class="hero-bg-accent"></div>
-        <div class="hero-particles"></div>
-        <div class="hero-particles-extra"></div>
 
         <!-- Scroll Indicator -->
         <div style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 3; text-align: center;">

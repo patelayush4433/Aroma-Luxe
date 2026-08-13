@@ -94,7 +94,6 @@ include_once __DIR__ . '/includes/header.php';
 
                     <div class="d-flex gap-3 justify-content-center justify-content-lg-start flex-wrap">
                         <a href="shop.php" class="btn btn-gold btn-lg px-4 py-3 shadow-gold"><i class="bi bi-bag-fill me-2"></i>Explore Collection</a>
-                        <a href="customize.php" class="btn btn-outline-gold btn-lg px-4 py-3"><i class="bi bi-magic me-2"></i>Bespoke Scent</a>
                     </div>
                 </div>
 

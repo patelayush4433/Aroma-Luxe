@@ -72,35 +72,23 @@ include_once __DIR__ . '/includes/header.php';
 ?>
 
     <!-- Premium Video Hero Section -->
-    <header class="hero-section" style="position: relative; overflow: hidden;">
-        <!-- Video Background -->
-        <video autoplay muted loop playsinline id="heroVideo" style="
-            position: absolute;
-            top: 50%; left: 50%;
-            min-width: 100%; min-height: 100%;
-            width: auto; height: auto;
-            transform: translate(-50%, -50%);
-            z-index: 0;
-            object-fit: cover;
-        ">
-            <source src="assets/videos/hero-bg.mp4" type="video/mp4">
-        </video>
-
-        <!-- Dark Overlay for Readability -->
+    <!-- Premium Image Hero Section -->
+    <header class="hero-section" style="position: relative; min-height: 85vh; display: flex; align-items: center; justify-content: center; overflow: hidden; background: url('assets/images/hero_luxury_banner.png') center center / cover no-repeat;">
+        <!-- Dark Gradient Overlay for High Contrast -->
         <div style="
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: linear-gradient(180deg, rgba(6,7,14,0.75) 0%, rgba(6,7,14,0.55) 40%, rgba(6,7,14,0.80) 100%);
+            background: linear-gradient(180deg, rgba(6,7,14,0.45) 0%, rgba(6,7,14,0.30) 50%, rgba(6,7,14,0.85) 100%);
             z-index: 1;
         "></div>
 
         <!-- Scroll Indicator -->
         <div style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 3; text-align: center;">
-            <div style="width: 24px; height: 40px; border: 2px solid rgba(212,168,83,0.4); border-radius: 12px; margin: 0 auto;">
+            <div style="width: 24px; height: 40px; border: 2px solid rgba(212,168,83,0.5); border-radius: 12px; margin: 0 auto; backdrop-filter: blur(4px);">
                 <div style="width: 4px; height: 8px; background: var(--gold); border-radius: 2px; margin: 6px auto 0; animation: scrollPulse 2s ease-in-out infinite;"></div>
             </div>
-            <span class="d-block mt-2" style="font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(212,168,83,0.5);">Scroll</span>
+            <span class="d-block mt-2" style="font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(212,168,83,0.7); text-shadow: 0 1px 4px rgba(0,0,0,0.8);">Scroll</span>
         </div>
     </header>
 

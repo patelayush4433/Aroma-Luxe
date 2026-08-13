@@ -1706,3 +1706,26 @@ input::placeholder, textarea::placeholder {
     -webkit-text-fill-color: transparent;
     animation: luxuryTextShimmer 6s linear infinite;
 }
+
+/* Light Theme High Contrast Dark Text Fix for Hero Section */
+[data-theme="light"] .hero-shimmer-title {
+    background: linear-gradient(120deg, #111827 0%, #451a03 40%, #78350f 70%, #111827 100%) !important;
+    background-size: 200% auto !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: #111827 !important;
+    font-weight: 800 !important;
+}
+
+[data-theme="light"] .hero-section .text-secondary {
+    color: #374151 !important;
+    font-weight: 500 !important;
+}
+
+[data-theme="light"] .hero-section {
+    background: radial-gradient(circle at center, rgba(212, 168, 83, 0.18) 0%, rgba(248, 250, 252, 0.98) 70%) !important;
+}
+
+[data-theme="light"] .hero-bottle-aura {
+    background: radial-gradient(circle, rgba(212, 168, 83, 0.45) 0%, rgba(201, 139, 110, 0.25) 50%, transparent 70%) !important;
+}

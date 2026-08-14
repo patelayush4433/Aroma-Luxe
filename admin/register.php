@@ -91,12 +91,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <input type="email" name="email" class="form-control bg-transparent border-secondary text-white" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label text-white-50 small">Password</label>
-                            <input type="password" name="password" class="form-control bg-transparent border-secondary text-white" required>
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <label class="form-label text-white-50 small m-0">Password *</label>
+                                <button type="button" class="btn btn-link p-0 text-warning text-decoration-none small" style="font-size: 0.78rem;" onclick="generateStrongPassword('adminPassword', 'adminConfirmPassword')">
+                                    <i class="bi bi-key-fill me-1"></i>Generate Strong Password
+                                </button>
+                            </div>
+                            <input type="password" name="password" id="adminPassword" class="form-control bg-transparent border-secondary text-white" required oninput="checkPasswordStrength(this.value)">
+                            
+                            <!-- Live Strength Meter -->
+                            <div class="mt-2 p-2 rounded-3" id="passwordStrengthBox" style="display: none; background: rgba(15,20,29,0.8); border: 1px solid rgba(212,175,55,0.2);">
+                                <div class="d-flex justify-content-between align-items-center mb-1" style="font-size: 0.72rem;">
+                                    <span class="text-secondary">Password Strength:</span>
+                                    <span class="fw-bold" id="strengthBadge">Weak</span>
+                                </div>
+                                <div class="progress bg-dark border border-secondary border-opacity-50" style="height: 5px;">
+                                    <div id="strengthBar" class="progress-bar bg-danger" role="progressbar" style="width: 0%; transition: all 0.3s ease;"></div>
+                                </div>
+                                <div class="row g-1 mt-2 text-secondary" style="font-size: 0.7rem;">
+                                    <div class="col-6" id="checkLength"><i class="bi bi-circle me-1"></i> 8+ characters</div>
+                                    <div class="col-6" id="checkUpper"><i class="bi bi-circle me-1"></i> Uppercase (A-Z)</div>
+                                    <div class="col-6" id="checkNumber"><i class="bi bi-circle me-1"></i> Number (0-9)</div>
+                                    <div class="col-6" id="checkSymbol"><i class="bi bi-circle me-1"></i> Symbol (@,#,$)</div>
+                                </div>
+                            </div>
                         </div>
+
                         <div class="mb-4">
-                            <label class="form-label text-white-50 small">Confirm Password</label>
-                            <input type="password" name="confirm_password" class="form-control bg-transparent border-secondary text-white" required>
+                            <label class="form-label text-white-50 small">Confirm Password *</label>
+                            <input type="password" name="confirm_password" id="adminConfirmPassword" class="form-control bg-transparent border-secondary text-white" required>
                         </div>
                         <button type="submit" class="btn btn-admin-gold w-100 py-2">Register Admin</button>
                     </form>
@@ -113,5 +136,101 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 
+    <script>
+        function generateStrongPassword(inputId, confirmId) {
+            const uppers = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const lowers = 'abcdefghijklmnopqrstuvwxyz';
+            const numbers = '0123456789';
+            const symbols = '!@#$%^&*';
+            const allChars = uppers + lowers + numbers + symbols;
+
+            let password = '';
+            password += uppers.charAt(Math.floor(Math.random() * uppers.length));
+            password += lowers.charAt(Math.floor(Math.random() * lowers.length));
+            password += numbers.charAt(Math.floor(Math.random() * numbers.length));
+            password += symbols.charAt(Math.floor(Math.random() * symbols.length));
+
+            for (let i = 4; i < 16; i++) {
+                password += allChars.charAt(Math.floor(Math.random() * allChars.length));
+            }
+            password = password.split('').sort(() => 0.5 - Math.random()).join('');
+
+            const input = document.getElementById(inputId);
+            const confirmInput = document.getElementById(confirmId);
+
+            if (input) {
+                input.value = password;
+                input.type = 'text';
+                checkPasswordStrength(password);
+            }
+            if (confirmInput) {
+                confirmInput.value = password;
+                confirmInput.type = 'text';
+            }
+        }
+
+        function checkPasswordStrength(password) {
+            const box = document.getElementById('passwordStrengthBox');
+            if (!box) return;
+            if (!password) {
+                box.style.display = 'none';
+                return;
+            }
+            box.style.display = 'block';
+
+            let score = 0;
+            const hasLength = password.length >= 8;
+            const hasUpper = /[A-Z]/.test(password);
+            const hasNumber = /[0-9]/.test(password);
+            const hasSymbol = /[^A-Za-z0-9]/.test(password);
+
+            if (hasLength) score++;
+            if (hasUpper) score++;
+            if (hasNumber) score++;
+            if (hasSymbol) score++;
+
+            updateCheckItem('checkLength', hasLength, '8+ characters');
+            updateCheckItem('checkUpper', hasUpper, 'Uppercase (A-Z)');
+            updateCheckItem('checkNumber', hasNumber, 'Number (0-9)');
+            updateCheckItem('checkSymbol', hasSymbol, 'Symbol (@,#,$)');
+
+            const bar = document.getElementById('strengthBar');
+            const badge = document.getElementById('strengthBadge');
+
+            if (score <= 1) {
+                bar.style.width = '25%';
+                bar.className = 'progress-bar bg-danger';
+                badge.innerText = 'Weak';
+                badge.className = 'fw-bold text-danger';
+            } else if (score === 2) {
+                bar.style.width = '50%';
+                bar.className = 'progress-bar bg-warning';
+                badge.innerText = 'Fair';
+                badge.className = 'fw-bold text-warning';
+            } else if (score === 3) {
+                bar.style.width = '75%';
+                bar.className = 'progress-bar bg-info';
+                badge.innerText = 'Good';
+                badge.className = 'fw-bold text-info';
+            } else {
+                bar.style.width = '100%';
+                bar.className = 'progress-bar bg-success';
+                badge.innerText = 'Strong 🔒';
+                badge.className = 'fw-bold text-success';
+            }
+        }
+
+        function updateCheckItem(elementId, isValid, text) {
+            const el = document.getElementById(elementId);
+            if (!el) return;
+            if (isValid) {
+                el.className = 'col-6 text-success';
+                el.innerHTML = '<i class="bi bi-check-circle-fill me-1"></i>' + text;
+            } else {
+                el.className = 'col-6 text-secondary';
+                el.innerHTML = '<i class="bi bi-circle me-1"></i>' + text;
+            }
+        }
+    </script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Administrator Secure Login Page - Ultra Luxury Split Layout
+ * Administrator Secure Login Page - Executive Cyber Portal
  */
 require_once __DIR__ . '/../config/config.php';
 
@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Portal Sign In — AromaLuxe</title>
+    <title>Admin Portal Sign In — AromaLuxe Executive</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -103,39 +103,68 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             width: 100%;
         }
         
-        /* Left Luxury Showcase Column */
-        .auth-showcase-col {
-            background: radial-gradient(circle at center, rgba(212, 168, 83, 0.15) 0%, rgba(6, 7, 14, 0.98) 75%), url('../assets/images/hero_luxury_banner.png') center center / cover no-repeat;
+        /* Left Executive High-Tech Cyber Showcase */
+        .admin-showcase-col {
+            background: radial-gradient(circle at center, rgba(212, 168, 83, 0.18) 0%, rgba(6, 7, 14, 0.98) 75%);
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 3rem;
-            border-right: 1px solid rgba(212, 168, 83, 0.2);
+            border-right: 1px solid rgba(212, 168, 83, 0.25);
             overflow: hidden;
         }
         
-        .auth-showcase-overlay {
+        .admin-showcase-grid-bg {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(135deg, rgba(6,7,14,0.88) 0%, rgba(6,7,14,0.60) 50%, rgba(6,7,14,0.95) 100%);
+            background-image: linear-gradient(rgba(212, 168, 83, 0.05) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(212, 168, 83, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
             z-index: 1;
         }
-        
-        .auth-showcase-content {
+
+        .admin-showcase-content {
             position: relative;
             z-index: 2;
-            max-width: 480px;
+            max-width: 500px;
         }
 
-        .auth-bottle-img {
-            max-width: 250px;
-            width: 100%;
-            height: auto;
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 35px rgba(212,168,83,0.3);
-            border: 1px solid rgba(212,168,83,0.35);
-            animation: floatLevitate 5s ease-in-out infinite;
+        @keyframes pulseEmblem {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 30px rgba(212, 168, 83, 0.3);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 60px rgba(212, 168, 83, 0.6);
+            }
+        }
+
+        .executive-shield-badge {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, rgba(212, 168, 83, 0.25) 0%, rgba(15, 18, 30, 0.9) 100%);
+            border: 2px solid rgba(212, 168, 83, 0.5);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            animation: pulseEmblem 4s ease-in-out infinite;
+        }
+
+        .dashboard-mock-card {
+            background: rgba(15, 18, 30, 0.85);
+            border: 1px solid rgba(212, 168, 83, 0.2);
+            border-radius: 16px;
+            padding: 1.25rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s ease;
+        }
+        .dashboard-mock-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(212, 168, 83, 0.4);
         }
 
         /* Right Glassmorphic Form Column */
@@ -241,30 +270,73 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="auth-split-wrapper container-fluid p-0">
         <div class="row g-0 min-vh-100">
 
-            <!-- Left Executive Visual Showcase -->
-            <div class="d-none d-lg-flex col-lg-6 auth-showcase-col">
-                <div class="auth-showcase-overlay"></div>
-                <div class="auth-showcase-content text-center">
-                    <div class="mb-4">
-                        <span class="badge bg-outline-gold text-warning border border-warning px-3 py-2 text-uppercase mb-3" style="letter-spacing: 3px; font-size: 0.7rem;">✦ Executive Portal ✦</span>
+            <!-- Left Executive Cyber Dashboard Showcase -->
+            <div class="d-none d-lg-flex col-lg-6 admin-showcase-col">
+                <div class="admin-showcase-grid-bg"></div>
+                <div class="admin-showcase-content text-center">
+                    
+                    <!-- Glowing Security Shield Emblem -->
+                    <div class="executive-shield-badge">
+                        <i class="bi bi-shield-lock-fill text-warning fs-1"></i>
                     </div>
 
-                    <div class="my-4">
-                        <img src="../assets/images/hero_luxury_banner.png" alt="AromaLuxe Perfume" class="auth-bottle-img">
-                    </div>
-
-                    <h2 class="font-display text-white mb-3" style="letter-spacing: 2px; font-size: 2.2rem;">
-                        Command & Control Center
+                    <h2 class="font-display text-white mb-2" style="letter-spacing: 2px; font-size: 2.1rem;">
+                        Executive Management Console
                     </h2>
-                    <p class="text-secondary small leading-relaxed mb-4" style="line-height: 1.8;">
-                        Manage product catalogs, real-time customer orders, sales revenue analytics, stock inventory, and coupon campaigns from your secure admin console.
+                    <p class="text-secondary small leading-relaxed mb-4">
+                        Real-time telemetry, order processing pipeline, stock inventory controls, and financial analytics.
                     </p>
 
-                    <div class="d-flex justify-content-center gap-4 text-warning small" style="letter-spacing: 1px;">
-                        <span><i class="bi bi-shield-check me-1"></i> SSL Encrypted</span>
-                        <span><i class="bi bi-speedometer2 me-1"></i> Live Analytics</span>
-                        <span><i class="bi bi-person-badge me-1"></i> Role Protection</span>
+                    <!-- Interactive Live Metrics Cards Grid -->
+                    <div class="row g-3 mb-4 text-start">
+                        <div class="col-6">
+                            <div class="dashboard-mock-card">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <span class="small text-muted" style="font-size: 0.72rem;">TOTAL REVENUE</span>
+                                    <i class="bi bi-graph-up-arrow text-success"></i>
+                                </div>
+                                <div class="fw-bold text-white fs-5">₹1,48,500</div>
+                                <span class="badge bg-success-subtle text-success mt-1" style="font-size: 0.65rem;">+28.4% this month</span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="dashboard-mock-card">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <span class="small text-muted" style="font-size: 0.72rem;">ACTIVE ORDERS</span>
+                                    <i class="bi bi-box-seam-fill text-warning"></i>
+                                </div>
+                                <div class="fw-bold text-white fs-5">142 Orders</div>
+                                <span class="badge bg-warning-subtle text-warning mt-1" style="font-size: 0.65rem;">Live Dispatch</span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="dashboard-mock-card">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <span class="small text-muted" style="font-size: 0.72rem;">INVENTORY ITEMS</span>
+                                    <i class="bi bi-droplet-half text-info"></i>
+                                </div>
+                                <div class="fw-bold text-white fs-5">1,280 Items</div>
+                                <span class="badge bg-info-subtle text-info mt-1" style="font-size: 0.65rem;">In Stock</span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="dashboard-mock-card">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <span class="small text-muted" style="font-size: 0.72rem;">SECURITY STATE</span>
+                                    <i class="bi bi-cpu-fill text-danger"></i>
+                                </div>
+                                <div class="fw-bold text-white fs-5">256-Bit SSL</div>
+                                <span class="badge bg-danger-subtle text-danger mt-1" style="font-size: 0.65rem;">Encrypted & Active</span>
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="d-flex justify-content-center gap-4 text-warning small" style="letter-spacing: 1px;">
+                        <span><i class="bi bi-shield-check me-1"></i> Admin Privileges</span>
+                        <span><i class="bi bi-speedometer2 me-1"></i> Realtime Logs</span>
+                        <span><i class="bi bi-person-badge me-1"></i> Role Protected</span>
+                    </div>
+
                 </div>
             </div>
 

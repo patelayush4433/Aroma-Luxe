@@ -9,7 +9,7 @@ $filterCategory = isset($_GET['category']) ? sanitize($_GET['category']) : '';
 $filterBrand = isset($_GET['brand']) ? sanitize($_GET['brand']) : '';
 $searchKeyword = isset($_GET['search']) ? sanitize($_GET['search']) : '';
 $filterMinPrice = isset($_GET['min_price']) ? (float)$_GET['min_price'] : 0.0;
-$filterMaxPrice = isset($_GET['max_price']) ? (float)$_GET['max_price'] : 400.0;
+$filterMaxPrice = isset($_GET['max_price']) ? (float)$_GET['max_price'] : 500.0;
 $filterRating = isset($_GET['rating']) ? (int)$_GET['rating'] : 0;
 $filterSize = isset($_GET['size']) ? sanitize($_GET['size']) : ''; // 30ml, 50ml, 100ml
 $filterLimited = isset($_GET['filter_limited']) ? (int)$_GET['filter_limited'] : 0;
@@ -55,13 +55,16 @@ if ($filterRating > 0) {
     $params['rating'] = $filterRating;
 }
 
-// Price filters (default matches 50ml size)
+// Price filters (matches selected size or default 50ml size)
+$sizeCol = in_array($filterSize, ['30ml', '50ml', '100ml']) ? $filterSize : '50ml';
+$calcPrice = "(p.price_" . $sizeCol . " - p.discount_" . $sizeCol . ")";
+
 if ($filterMinPrice > 0) {
-    $query .= " AND (p.price_50ml - p.discount_50ml) >= :min_price";
+    $query .= " AND $calcPrice >= :min_price";
     $params['min_price'] = $filterMinPrice;
 }
-if ($filterMaxPrice < 400.0) {
-    $query .= " AND (p.price_50ml - p.discount_50ml) <= :max_price";
+if (isset($_GET['max_price'])) {
+    $query .= " AND $calcPrice <= :max_price";
     $params['max_price'] = $filterMaxPrice;
 }
 
@@ -182,13 +185,16 @@ include_once __DIR__ . '/includes/header.php';
                         <?php if(!empty($filterCategory)): ?><input type="hidden" name="category" value="<?php echo $filterCategory; ?>"><?php endif; ?>
                         <?php if(!empty($filterBrand)): ?><input type="hidden" name="brand" value="<?php echo $filterBrand; ?>"><?php endif; ?>
                         <?php if(!empty($searchKeyword)): ?><input type="hidden" name="search" value="<?php echo $searchKeyword; ?>"><?php endif; ?>
+                        <?php if(!empty($filterSize)): ?><input type="hidden" name="size" value="<?php echo $filterSize; ?>"><?php endif; ?>
                         
                         <label class="form-label text-white-50 small mb-2 d-flex justify-content-between">
-                            <span>Max Price (INR)</span>
+                            <span>Max Price (<?php echo $settings['currency'] ?? 'INR'; ?>)</span>
                             <strong class="text-warning"><?php echo $settings['currency_symbol'] ?? '₹'; ?><span id="priceValDisplay"><?php echo $filterMaxPrice; ?></span></strong>
                         </label>
-                        <input type="range" class="form-range" name="max_price" min="0" max="400" step="10" value="<?php echo $filterMaxPrice; ?>" oninput="document.getElementById('priceValDisplay').innerText=this.value">
-                        <button type="submit" class="btn btn-sm btn-outline-gold w-100 mt-2 py-1" style="font-size:0.75rem;">Apply Price</button>
+                        <input type="range" class="form-range" name="max_price" id="maxPriceSlider" min="20" max="500" step="10" value="<?php echo $filterMaxPrice; ?>" oninput="document.getElementById('priceValDisplay').innerText=this.value" onchange="this.form.submit()">
+                        <button type="submit" class="btn btn-sm btn-gold w-100 mt-2 py-2 fw-bold shadow-gold" style="font-size:0.82rem;">
+                            <i class="bi bi-funnel-fill me-1"></i>Apply Price Filter
+                        </button>
                     </form>
 
                     <!-- Scent Bottle Size -->
